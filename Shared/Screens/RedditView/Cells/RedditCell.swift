@@ -33,6 +33,17 @@ class RedditCell: UITableViewCell {
         return UINib(nibName: "RedditCell", bundle: nil)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        newsTitleLabel.text = nil
+        newsDateTitleLabel.text = nil
+
+        newsImage.image = UIImage(systemName: "photo.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        newsImage.backgroundColor = .systemGray5
+        newsImage.contentMode = .scaleAspectFit
+    }
+    
     // MARK: - Configure Cell
     func configure(with article: RedditPost) {
         newsTitleLabel.text = article.title
